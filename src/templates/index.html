@@ -34,7 +34,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <link rel="shortcut icon" href="<%=settings.favicon%>">
 
-        <link rel="localizations" type="application/l10n+json" href="locales.json">
+        <link rel="localizations" type="application/l10n+json" href="/l/locales.json">
         <script type="text/javascript" src="static/js/html10n.js"></script>
         <script type="text/javascript" src="static/js/l10n.js"></script>
 
@@ -55,7 +55,7 @@
             }
             #wrapper {
               border-top: 1px solid #999;
-              margin-top: 160px;
+              margin-top: 40vh;
               padding: 15px;
               background: #eee;
               background: -webkit-linear-gradient(#fff,#ccc);
@@ -66,7 +66,7 @@
             }
             #inner {
               position:relative;
-              max-width: 300px;
+              max-width: 500px;
               margin: 0 auto;
             }
             #button {
@@ -161,46 +161,10 @@
         <div id="wrapper">
         <% e.begin_block("indexWrapper"); %>
             <div id="inner">
-                <buttOn id="button" onclick="go2Random()" data-l10n-id="index.newPad"></button>
-                <label id="label" for="padname" data-l10n-id="index.createOpenPad"></label>
-                <form action="#" onsubmit="go2Name();return false;">
-                    <input type="text" id="padname" maxlength="50" autofocus x-webkit-speech>
-                    <button type="submit">OK</button>
-                </form>
+                <h1>DtherPad: dreeves's EtherPad <br> Also known as hippo.padm.us</h1>
+                (If you don't know how to create new pads, ask <a href="http://ai.eecs.umich.edu/people/dreeves">dreeves</a>.)
             </div>
         <% e.end_block(); %>
         </div>
 
-        <script src="static/custom/index.js"></script>
-        <script>
-            // @license magnet:?xt=urn:btih:8e4f440f4c65981c5bf93c76d35135ba5064d8b7&dn=apache-2.0.txt
-            function go2Name()
-            {
-                var padname = document.getElementById("padname").value;
-                padname.length > 0 ? window.location = "p/" + padname : alert("Please enter a name")
-            }
-
-            function go2Random()
-            {
-                window.location = "p/" + randomPadName();
-            }
-
-            function randomPadName()
-            {
-                var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-                var string_length = 10;
-                var randomstring = '';
-                for (var i = 0; i < string_length; i++)
-                {
-                    var rnum = Math.floor(Math.random() * chars.length);
-                    randomstring += chars.substring(rnum, rnum + 1);
-                }
-                return randomstring;
-            }
-
-            // start the custom js
-            if (typeof customStart == "function") customStart();
-            // @license-end
-        </script>
-        <div style="display:none"><a href="/javascript" data-jslicense="1">JavaScript license information</a></div>
 </html>

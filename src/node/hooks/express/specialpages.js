@@ -38,8 +38,8 @@ exports.expressCreateServer = function (hook_name, args, cb) {
     });
   });
 
-  //serve pad.html under /p
-  args.app.get('/p/:pad', function(req, res, next)
+  //serve pad.html under /
+  args.app.get('/:pad', function(req, res, next)
   {
     // Set language for pad editor for the first time
     // Or if language cookie doesn't exist
@@ -49,7 +49,7 @@ exports.expressCreateServer = function (hook_name, args, cb) {
     }
 
     // The below might break for pads being rewritten
-    var isReadOnly = req.url.indexOf("/p/r.") === 0;
+    var isReadOnly = req.url.indexOf("/r.") === 0;
 
     hooks.callAll("padInitToolbar", {
       toolbar: toolbar,
@@ -63,8 +63,8 @@ exports.expressCreateServer = function (hook_name, args, cb) {
     }));
   });
 
-  //serve timeslider.html under /p/$padname/timeslider
-  args.app.get('/p/:pad/timeslider', function(req, res, next)
+  //serve timeslider.html under /$padname/timeslider
+  args.app.get('/:pad/timeslider', function(req, res, next)
   {
     hooks.callAll("padInitToolbar", {
       toolbar: toolbar
