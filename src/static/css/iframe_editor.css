@@ -64,6 +64,7 @@ body.doesWrap:not(.noprewrap) > div{
 }
 
 #innerdocbody {
+  font-family: "Lucida Console", Menlo, Consolas, Monaco, Monospace !important;
   padding-top: 1px; /* important for some reason? */
   padding-right: 10px;
   padding-bottom: 8px;

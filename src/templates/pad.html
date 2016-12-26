@@ -53,6 +53,7 @@
         <link rel="localizations" type="application/l10n+json" href="/l/locales.json" />
         <script type="text/javascript" src="../static/js/html10n.js"></script>
         <script type="text/javascript" src="../static/js/l10n.js"></script>
+        <style>.buttonicon-listnumbered:before{content: "\e816"}</style>
 
         <!-- head and body had been removed intentionally -->
 
@@ -68,6 +69,9 @@
                 <% e.end_block(); %>
             </ul>
             <ul class="menu_right" role="toolbar">
+                <li data-type="button">
+                    <a class="linenumbers" title="Toggle line numbers" aria-label="Toggle line numbers" style="0px 0px 30px inset;"><button class=" buttonicon buttonicon-listnumbered" title="Toggle line numbers" aria-label="Toggle line numbers"></button></a></li>
+                <li class="separator"></li>
                 <% e.begin_block("editbarMenuRight"); %>
                 <%- toolbar.menu(settings.toolbar.right, isReadOnly) %>
                 <% e.end_block(); %>
@@ -421,6 +425,7 @@
             }());
             // @license-end
         </script>
+        <script>$('a.linenumbers').on('click', function(){ $('input#options-linenoscheck').click()});</script>
         <div style="display:none"><a href="/javascript" data-jslicense="1">JavaScript license information</a></div>
         <% e.end_block(); %>
 </html>
