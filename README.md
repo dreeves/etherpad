@@ -3,14 +3,18 @@ This is a fork of Etherpad with various customizations that we Beeminder people 
 * simpler URLs
 * fewer formatting options
 * monospace font
-* maybe a better color picker
+* better color picker
 
 Links from the EtherpadLite project we forked this from:
 
 * [HTTP API](https://github.com/ether/etherpad-lite/wiki/HTTP-API)
 * [Client libraries for API](https://github.com/ether/etherpad-lite/wiki/HTTP-API-client-libraries)
 * [jQuery plugin](https://github.com/ether/etherpad-lite-jquery-plugin) (helps embed pads in other websites)
+* [Wiki](https://github.com/ether/etherpad-lite/wiki) (Tutorials and How-to's)
 * [FAQ](https://github.com/ether/etherpad-lite/wiki/FAQ)
+* [Video on getting started with Etherpad Development](http://youtu.be/67-Q26YH97E)
+* [Etherpad's `Easysync` library](https://github.com/ether/etherpad-lite/raw/master/doc/easysync/easysync-full-description.pdf)
+* [Installing themes and plugins](https://github.com/ether/etherpad-lite/wiki/Available-Plugins)
 
 # Installation
 
@@ -32,35 +36,23 @@ Now, run `bin/run.sh` and open <http://127.0.0.1:9001> in your browser.
 
 Update to the latest version with `git pull origin`. The next start with bin/run.sh will update the dependencies.
 
-# Next Steps
+## Tweaking settings
 
-## Tweak the settings
+You can initially modify the settings in `settings.json`. 
+(If you need to handle multiple settings files, you can pass the path to a settings file to `bin/run.sh` using the `-s|--settings` option. This allows you to run multiple Etherpad instances from the same installation.)  Once you have access to your /admin section settings can be modified through the web browser.
 
-You can initially modify the settings in `settings.json`. (If you need to handle multiple settings files, you can pass the path to a settings file to `bin/run.sh` using the `-s|--settings` option. This allows you to run multiple Etherpad instances from the same installation.)  Once you have access to your /admin section settings can be modified through the web browser.
+## Database
 
-You should use a dedicated database such as "mysql", if you are planning on using etherpad-in a production environment, since the "dirtyDB" database driver is only for testing and/or development purposes.
+You should use a dedicated database such as MySQL in production.
+The DirtyDB database driver is only for testing/dev.
 
-## Plugins and themes
+## Documentation
 
-Etherpad is very customizable through plugins. Instructions for installing themes and plugins can be found in [the plugin wiki article](https://github.com/ether/etherpad-lite/wiki/Available-Plugins).
+Documentation is in `docs/`.
 
-## Helpful resources
+## Development
 
-The [wiki](https://github.com/ether/etherpad-lite/wiki) is your one-stop resource for Tutorials and How-to's.
-
-Documentation can be found in `docs/`.
-
-# Development
-
-## Things you should know
-
-Understand [git](https://training.github.com/) and watch this [video on getting started with Etherpad Development](http://youtu.be/67-Q26YH97E).
-
-If you're new to node.js, start with Ryan Dahl's [Introduction to Node.js](http://youtu.be/jo_B4LTHi3I).
-
-You can debug Etherpad using `bin/debugRun.sh`.
-
-If you want to find out how Etherpad's `Easysync` works (the library that makes it really realtime), start with this [PDF](https://github.com/ether/etherpad-lite/raw/master/doc/easysync/easysync-full-description.pdf) (complex, but worth reading).
+Debug Etherpad with `bin/debugRun.sh`.
 
 # License
 
