@@ -64,13 +64,13 @@
             </div>
 
             <ul class="menu_left" role="toolbar">
+                <li data-type="button">
+                    <a class="linenumbers" title="Toggle line numbers" aria-label="Toggle line numbers" style="0px 0px 30px inset;"><button class=" buttonicon buttonicon-listnumbered" title="Toggle line numbers" aria-label="Toggle line numbers"></button></a></li>
                 <% e.begin_block("editbarMenuLeft"); %>
                 <%- toolbar.menu(settings.toolbar.left, isReadOnly) %>
                 <% e.end_block(); %>
             </ul>
             <ul class="menu_right" role="toolbar">
-                <li data-type="button">
-                    <a class="linenumbers" title="Toggle line numbers" aria-label="Toggle line numbers" style="0px 0px 30px inset;"><button class=" buttonicon buttonicon-listnumbered" title="Toggle line numbers" aria-label="Toggle line numbers"></button></a></li>
                 <li class="separator"></li>
                 <% e.begin_block("editbarMenuRight"); %>
                 <%- toolbar.menu(settings.toolbar.right, isReadOnly) %>
