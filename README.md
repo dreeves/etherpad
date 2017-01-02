@@ -1,11 +1,12 @@
-This is a fork of Etherpad with various customizations that we Beeminder people like.
+This is a fork of Etherpad 1.6.0 with various customizations that we Beeminder people like.
 
 * simpler URLs
 * fewer formatting options
 * monospace font
 * better color picker
+* custom buttons
 
-## Our labels ontology for issues
+## Our label ontology for issue tracking
 
 * BUG - self-explanatory
 * CNR - could not reproduce
@@ -31,6 +32,9 @@ You could also just close an issue instead of labeling it ZAP'd but Joel Spolsky
 * [Video on getting started with Etherpad Development](http://youtu.be/67-Q26YH97E)
 * [Etherpad's `Easysync` library](https://github.com/ether/etherpad-lite/raw/master/doc/easysync/easysync-full-description.pdf)
 * [Installing themes and plugins](https://github.com/ether/etherpad-lite/wiki/Available-Plugins)
+* Documentation is in `docs/`.
+* Debug Etherpad with `bin/debugRun.sh`.
+* License: [Apache License v2](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 ## Installation (Unix)
 
@@ -57,14 +61,3 @@ You can initially modify the settings in `settings.json`.
 (If you need to handle multiple settings files, you can pass the path to a settings file to `bin/run.sh` using the `-s|--settings` option. This allows you to run multiple Etherpad instances from the same installation.)
 Once you have access to your /admin section then settings can be modified through the web browser.
 
-## Documentation
-
-Documentation is in `docs/`.
-
-## Development
-
-Debug Etherpad with `bin/debugRun.sh`.
-
-# License
-
-[Apache License v2](http://www.apache.org/licenses/LICENSE-2.0.html)
