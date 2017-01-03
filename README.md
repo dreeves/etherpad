@@ -1,4 +1,4 @@
-This is a fork of Etherpad 1.6.0 with various customizations that we Beeminder people like.
+This is a fork of Etherpad (as of 1.6.0) with various customizations that we Beeminder people like.
 
 * simpler URLs
 * fewer formatting options
@@ -13,7 +13,7 @@ The following are descriptive labels and are colored black-on-light:
 * BUG - opposite of feature
 * REQ - feature request
 * UVI - user-visible improvement candidate
-* MEN - mendoza = need to resolve before deploying
+* MEN - mendoza = need to resolve before deploying, part of MVP
 * PEA - easy-peasy
 * SKY - pie in the sky = would be awesome but not necessarily worth the effort
 
@@ -34,7 +34,19 @@ person who actually opened the issue should close it.
 and either agree by labeling it ZAP or NIX or whatnot or else reopen it with a 
 comment.)
 
-## Links from the EtherpadLite project we forked this from:
+Other candidate labels: 
+
+* CSS/style/polish, which could count as BUG or UVI
+* User confusion, which could count as a BUG if severe enough
+* Things needing triage, which could be indicated by lack of labels
+
+## The three parts of a proper bug report
+
+1. Steps to reproduce
+2. What you expected to see
+3. What you saw instead
+
+## Links from the EtherpadLite project we forked this from
 
 * [HTTP API](https://github.com/ether/etherpad-lite/wiki/HTTP-API)
 * [Client libraries for API](https://github.com/ether/etherpad-lite/wiki/HTTP-API-client-libraries)
