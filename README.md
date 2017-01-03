@@ -11,7 +11,8 @@ This is a fork of Etherpad 1.6.0 with various customizations that we Beeminder p
 * BUG - self-explanatory
 * CNR - could not reproduce
 * DUP - duplicate
-* FEA - feature
+* FEA - feature, as in not-a-bug
+* REQ - feature request
 * MEN - mendoza = need to solve it before deploying
 * NIX - won't fix
 * PEA - easy-peasy
