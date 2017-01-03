@@ -8,28 +8,31 @@ This is a fork of Etherpad 1.6.0 with various customizations that we Beeminder p
 
 ## Our label ontology for issue tracking
 
+The following are descriptive labels and are colored black-on-light:
+
 * BUG - opposite of feature
-* FEA - opposite of bug, i.e., by design
 * REQ - feature request
 * UVI - user-visible improvement candidate
 * MEN - mendoza = need to resolve before deploying
-* CNR - could not reproduce
-* DUP - duplicate
-* NIX - won't fix
 * PEA - easy-peasy
 * SKY - pie in the sky = would be awesome but not necessarily worth the effort
+
+The following indicate an issue is resolved and are colored white-on-dark:
+
+* ZAP - fixed
+* NIX - won't fix
 * ZZZ - postponed/snoozed
-* ZAP - fixed/resolved 
+* CNR - could not reproduce
+* DUP - duplicate
+* FEA - opposite of bug, i.e., by design
 
-You could just close an issue instead of labeling it ZAP'd but 
-[Joel Spolsky says](https://www.joelonsoftware.com/2000/11/08/painless-bug-tracking/)
-that the fixer should mark it fixed and only the person who actually opened the 
-issue should close it.
-He also says to distinguish between *resolving* 
--- ZAP, NIX, ZZZ, CNR, DUP, FEA --
-and *closing* so those 6 labels are colored white-on-dark instead of 
-black-on-light to distinguish them.
-
+This is modeled on
+[Joel Spolsky's article on bug tracking](https://www.joelonsoftware.com/2000/11/08/painless-bug-tracking/)
+which recommends that the fixer should mark an issue fixed/resolved and only the
+person who actually opened the issue should close it.
+(Maybe it's also fine for the person who opened it to notice when it's closed 
+and either agree by labeling it ZAP or NIX or whatnot or else reopen it with a 
+comment.)
 
 ## Links from the EtherpadLite project we forked this from:
 
