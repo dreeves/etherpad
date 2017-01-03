@@ -8,20 +8,28 @@ This is a fork of Etherpad 1.6.0 with various customizations that we Beeminder p
 
 ## Our label ontology for issue tracking
 
-* BUG - self-explanatory
+* BUG - opposite of feature
+* FEA - opposite of bug, i.e., by design
+* REQ - feature request
+* UVI - user-visible improvement candidate
+* MEN - mendoza = need to resolve before deploying
 * CNR - could not reproduce
 * DUP - duplicate
-* FEA - feature, as in not-a-bug
-* REQ - feature request
-* MEN - mendoza = need to solve it before deploying
 * NIX - won't fix
 * PEA - easy-peasy
-* SKY - pie in the sky = would be awesome but not necessarily worth the effort unless it's easier than we think
-* UVI - user-visible improvement
+* SKY - pie in the sky = would be awesome but not necessarily worth the effort
 * ZZZ - postponed/snoozed
 * ZAP - fixed/resolved 
 
-You could also just close an issue instead of labeling it ZAP'd but Joel Spolsky says that the fixer should mark it fixed and only the person who actually opened the issue should close it.
+You could just close an issue instead of labeling it ZAP'd but 
+[Joel Spolsky says](https://www.joelonsoftware.com/2000/11/08/painless-bug-tracking/)
+that the fixer should mark it fixed and only the person who actually opened the 
+issue should close it.
+He also says to distinguish between *resolving* 
+-- ZAP, NIX, ZZZ, CNR, DUP, FEA --
+and *closing* so those 6 labels are colored white-on-dark instead of 
+black-on-light to distinguish them.
+
 
 ## Links from the EtherpadLite project we forked this from:
 
