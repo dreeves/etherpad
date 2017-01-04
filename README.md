@@ -34,6 +34,9 @@ person who actually opened the issue should close it.
 and either agree by labeling it ZAP or NIX or whatnot or else reopen it with a 
 comment.)
 
+Pro tip: See all issues that are closed but not fixed with with a filter like so: 
+`is:issue is:closed -label:ZAP`
+
 Other candidate labels: 
 
 * CSS/style/polish, which could count as BUG or UVI
