@@ -1,4 +1,3 @@
-test1209
 This is a fork of Etherpad (as of 1.6.0) with various customizations that we Beeminder people like.
 
 * simpler URLs
@@ -25,7 +24,7 @@ The following indicate an issue is resolved and are colored white-on-dark:
 * ZZZ - postponed/snoozed
 * CNR - could not reproduce
 * DUP - duplicate
-* FEA - opposite of bug, i.e., by design
+* AOK - feature, opposite of bug, by design
 
 This is modeled on
 [Joel Spolsky's article on bug tracking](https://www.joelonsoftware.com/2000/11/08/painless-bug-tracking/)
