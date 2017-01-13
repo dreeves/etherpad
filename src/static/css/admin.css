@@ -184,6 +184,7 @@ td, th {
   outline: none;
   width: 100%;
   min-height: 500px;
+  font-family: "Lucida Console",Menlo,Consolas,Monaco,Monospace;
 }
 
 #response {

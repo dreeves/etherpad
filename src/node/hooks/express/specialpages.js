@@ -8,7 +8,7 @@ exports.expressCreateServer = function (hook_name, args, cb) {
   // expose current stats
   args.app.get('/stats', function(req, res) {
     res.json(require('ep_etherpad-lite/node/stats').toJSON())
-  })
+  });
 
   //serve index.html under /
   args.app.get('/', function(req, res)
@@ -21,6 +21,7 @@ exports.expressCreateServer = function (hook_name, args, cb) {
   {
     res.send(eejs.require("ep_etherpad-lite/templates/javascript.html"));
   });
+
 
 
   //serve robots.txt
@@ -38,7 +39,23 @@ exports.expressCreateServer = function (hook_name, args, cb) {
     });
   });
 
-  //serve pad.html under /
+  //serve favicon.ico
+  args.app.get('/favicon.ico', function(req, res)
+  {
+    var filePath = path.normalize(__dirname + "/../../../static/favicon.ico");
+    res.sendFile(filePath, function(err)
+    {
+      //there is no custom favicon, send the default favicon
+      if(err)
+      {
+        filePath = path.normalize(__dirname + "/../../../static/favicon.ico");
+        res.sendFile(filePath);
+      }
+    });
+  });
+
+
+  //serve pad.html under /$padname
   args.app.get('/:pad', function(req, res, next)
   {
     // Set language for pad editor for the first time

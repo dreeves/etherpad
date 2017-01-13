@@ -71,6 +71,8 @@
                 <% e.end_block(); %>
             </ul>
             <ul class="menu_right" role="toolbar">
+                <li data-type="button">
+                    <a class="expost" title="Visit Expost version" aria-label="Visit Expost version" style="font-size: 130%; padding-top: 5px; color: #555; padding-bottom: 3px; ">expost</a></li>
                 <li class="separator"></li>
                 <% e.begin_block("editbarMenuRight"); %>
                 <%- toolbar.menu(settings.toolbar.right, isReadOnly) %>
@@ -425,7 +427,13 @@
             }());
             // @license-end
         </script>
-        <script>$('a.linenumbers').on('click', function(){ $('input#options-linenoscheck').click()});</script>
+        <script>$('a.linenumbers').on('click', function(){ $('input#options-linenoscheck').click()});
+        $('a.expost').on('click', function(){   
+            var padName = window.location.href.substring(window.location.href.search(/\/[\d\w\_\-]*?$/g)+1);
+            var win = window.open('http://expost.padm.us/'+padName, '_blank');
+            win.focus();
+        });
+        </script>
         <div style="display:none"><a href="/javascript" data-jslicense="1">JavaScript license information</a></div>
         <% e.end_block(); %>
 </html>
