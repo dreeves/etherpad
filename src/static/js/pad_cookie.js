@@ -76,7 +76,7 @@ var padcookie = (function()
 
     if ((!getRawCookie()) && (!alreadyWarnedAboutNoCookies))
     {
-      alert("Warning: it appears that your browser does not have cookies enabled." + " EtherPad uses cookies to keep track of unique users for the purpose" + " of putting a quota on the number of active users.  Using EtherPad without " + " cookies may fill up your server's user quota faster than expected.");
+      // alert("Warning: it appears that your browser does not have cookies enabled." + " EtherPad uses cookies to keep track of unique users for the purpose" + " of putting a quota on the number of active users.  Using EtherPad without " + " cookies may fill up your server's user quota faster than expected.");
       alreadyWarnedAboutNoCookies = true;
     }
   }
