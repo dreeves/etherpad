@@ -88,3 +88,15 @@ You can initially modify the settings in `settings.json`.
 (If you need to handle multiple settings files, you can pass the path to a settings file to `bin/run.sh` using the `-s|--settings` option. This allows you to run multiple Etherpad instances from the same installation.)
 Once you have access to your /admin section then settings can be modified through the web browser.
 
+## Hide-Referer plugin adjustments:
+
+To make it work the way we want, you need to do the following:
+- edit /node_modules/ep_hide_referrer/index.js and replace:
+        args.app.get('/redirect', function(req, res) {
+  with:
+        args.app.get('/redirect/', function(req, res) {
+
+- edit /node_modules/ep_hide_referrer/templates/redirect.html and replace row 25:
+        the_content.innerHTML = '<h4>Referer protection &ndash; Click to visit this external link:</h4><h3><a href="'+urlhash+'">'+urlhash+'</a></h3>';
+  with:
+        window.location.href = urlhash;
