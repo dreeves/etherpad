@@ -16,49 +16,7 @@ This is a fork of Etherpad (as of 1.6.0 or 1.6.1) with various customizations th
 7. prompt_for_name to encourage authors to identify themselves
 8. sync_status to show when all changes are saved
 
-## Our label ontology for issue tracking
-
-The following are descriptive labels and are colored black-on-light:
-
-* BUG - opposite of feature
-* REQ - feature request
-* UVI - user-visible improvement candidate
-* MEN - mendoza = need to resolve before deploying, part of MVP
-* PEA - easy-peasy
-* SKY - pie in the sky = would be awesome but not necessarily worth the effort
-
-The following indicate an issue is resolved and are colored white-on-dark:
-
-* zap - fixed
-* nix - won't fix
-* zzz - postponed/snoozed
-* cnr - could not reproduce
-* dup - duplicate
-* aok - feature, opposite of bug, by design
-
-Also they're lowercase because they're lower priority (well, zero priority, being closed).
-This is modeled on
-[Joel Spolsky's article on bug tracking](https://www.joelonsoftware.com/2000/11/08/painless-bug-tracking/)
-which recommends that the fixer should mark an issue fixed/resolved and only the
-person who actually opened the issue should close it.
-(Maybe it's also fine for the person who opened it to notice when it's closed 
-and either agree by labeling it "zap" or "nix" or whatnot or else reopen it with a 
-comment.)
-
-Pro tip: See all issues that are closed but not fixed with with a filter like so: 
-`is:issue is:closed -label:zap`
-
-Other candidate labels: 
-
-* CSS/style/polish, which could count as BUG or UVI
-* User confusion, which could count as a BUG if severe enough
-* Things needing triage, which could be indicated by lack of labels
-
-## The three parts of a proper bug report
-
-1. Steps to reproduce
-2. What you expected to see
-3. What you saw instead
+## [Label Ontology](http://doc.beeminder.com/buglabels)
 
 ## Links from the EtherpadLite project we forked this from
 
