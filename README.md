@@ -1,10 +1,20 @@
-This is a fork of Etherpad (as of 1.6.0) with various customizations that we Beeminder people like.
+This is a fork of Etherpad (as of 1.6.0 or 1.6.1) with various customizations that we Beeminder people like.
 
 * simpler URLs
 * fewer formatting options
 * monospace font
-* better color picker
 * custom buttons
+
+## Plugins we use
+
+1. adminpads so that paddomain.com/admin gives an admin interface
+2. author_hover to see who typed what (names shown as hovertext)
+3. brightcolorpicker to show a 5x5 grid of sane color choices
+4. hide_referrer to not leak pad urls when you click links in pads
+5. pad_activity_notification_in_title to handily indicate changes
+6. post_data to import pads programmatically (not using anymore)
+7. prompt_for_name to encourage authors to identify themselves
+8. sync_status to show when all changes are saved
 
 ## Our label ontology for issue tracking
 
@@ -19,23 +29,24 @@ The following are descriptive labels and are colored black-on-light:
 
 The following indicate an issue is resolved and are colored white-on-dark:
 
-* ZAP - fixed
-* NIX - won't fix
-* ZZZ - postponed/snoozed
-* CNR - could not reproduce
-* DUP - duplicate
-* AOK - feature, opposite of bug, by design
+* zap - fixed
+* nix - won't fix
+* zzz - postponed/snoozed
+* cnr - could not reproduce
+* dup - duplicate
+* aok - feature, opposite of bug, by design
 
+Also they're lowercase because they're lower priority (well, zero priority, being closed).
 This is modeled on
 [Joel Spolsky's article on bug tracking](https://www.joelonsoftware.com/2000/11/08/painless-bug-tracking/)
 which recommends that the fixer should mark an issue fixed/resolved and only the
 person who actually opened the issue should close it.
 (Maybe it's also fine for the person who opened it to notice when it's closed 
-and either agree by labeling it ZAP or NIX or whatnot or else reopen it with a 
+and either agree by labeling it "zap" or "nix" or whatnot or else reopen it with a 
 comment.)
 
 Pro tip: See all issues that are closed but not fixed with with a filter like so: 
-`is:issue is:closed -label:ZAP`
+`is:issue is:closed -label:zap`
 
 Other candidate labels: 
 
