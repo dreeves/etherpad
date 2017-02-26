@@ -1,213 +1,169 @@
-/*
-  This file must be valid JSON. But comments are allowed
+/*******************************************************************************
+  Template for Beetherpad Settings! (Same as the real one but without passwords)
+  This file must be valid JSON (plus comments).
+  NB: Edit settings.json -- not settings.json.template
+  If you want you can separate out credentials and put those in credentials.json
+*******************************************************************************/
 
-  Please edit settings.json, not settings.json.template
-
-  To still commit settings without credentials you can
-  store any credential settings in credentials.json
-*/
 {
-  // Name your instance!
-  "title": "Etherpad",
 
-  // favicon default name
-  // alternatively, set up a fully specified Url to your own favicon
-  "favicon": "favicon.ico",
+"title": "Beetherpad", // used as the html title for the browser tab
+"favicon": "favicon.ico", // can also be fully specified URL
+"defaultPadText": "Voila, a new pad. Edit me!",
+"suppressErrorsInPadText": false,
 
-  //IP and port which etherpad should bind at
-  "ip": "0.0.0.0",
-  "port" : 9001,
+"requireSession":    false, // true means only group pads accessible
+"sessionNoPassword": false, // passwd-protected pads accessible w/ valid session
+"editOnly":            false, // pad creation only via API
+"requireAuthentication": false, // of course /admin requires auth regardless
+"requireAuthorization":  false, // by a module or user with is_admin (see below)
 
-  // Option to hide/show the settings.json in admin page, default option is set to true
-  "showSettingsInAdminPage" : true,
+// Toolbar buttons that are suppressed currently: 
+//   settings, bold, italic, underline, 
+//   orderedlist, unorderedlist, indent, outdent
+"toolbar": {
+  "left": [
+    // NB: we've hardcoded a line number toggle button here
+    ["strikethrough"],
+    ["undo", "redo"]
+  ],
+  "right": [
+    // NB: we've hardcoded the expost button here
+    ["savedrevision", "timeslider"],
+    ["embed", "importexport"],
+    ["clearauthorship"],
+    ["showusers"]
+  ],
+  "timeslider": [
+    ["timeslider_export", "timeslider_settings", "timeslider_returnToPad"]
+  ]
+},
 
-  /*
-  // Node native SSL support
-  // this is disabled by default
-  //
-  // make sure to have the minimum and correct file access permissions set
-  // so that the Etherpad server can access them
+"ep_brightcolorpicker": {
+  "brightness": 0.25, // range [0-1], default 0.25
+  "columns": 5        // range [1-10], default 6 columns of color swaths
+},
 
-  "ssl" : {
-            "key"  : "/path-to-your/epl-server.key",
-            "cert" : "/path-to-your/epl-server.crt",
-            "ca": ["/path-to-your/epl-intermediate-cert1.crt", "/path-to-your/epl-intermediate-cert2.crt"]
-          },
+"padOptions": {           // overridable by users in settings
+  "noColors": false,
+  "showControls": true,
+  "showChat": false,
+  "showLineNumbers": true,
+  "useMonospaceFont": true,
+  "userName": true,
+  "userColor": true,
+  "rtl": false,
+  "alwaysShowChat": false,
+  "chatAndUsers": false,
+  "lang": "en"
+},
 
-  */
+"indentationOnNewLine": false, // Auto-indent if prev line ends w/ one of ":[({"
 
-  //The Type of the database. You can choose between dirty, postgres, sqlite and mysql
-  //You shouldn't use "dirty" for for anything else than testing or development
-  "dbType" : "dirty",
-  //the database specific settings
-  "dbSettings" : {
-                   "filename" : "var/dirty.db"
-                 },
+/******************************************************************************
+ *                  User-Visible Settings above this line                     *
+ ******************************************************************************/
 
-  /* An Example of MySQL Configuration
-   "dbType" : "mysql",
-   "dbSettings" : {
-                    "user"    : "root",
-                    "host"    : "localhost",
-                    "password": "",
-                    "database": "store",
-                    "charset" : "utf8mb4"
-                  },
-  */
+"ip": "127.0.0.1",
+"port": 9001,
+"showSettingsInAdminPage": true, // default true
+"disableIPlogging": false,
 
-  //the default text of a pad
-  "defaultPadText" : "Welcome to Etherpad!\n\nThis pad text is synchronized as you type, so that everyone viewing this page sees the same text. This allows you to collaborate seamlessly on documents!\n\nGet involved with Etherpad at http:\/\/etherpad.org\n",
+// DB types: dirty, postgres, sqlite, mysql
+// "dbType": "dirty", // DirtyDB is for testing/dev only!
+// "dbSettings": { "filename" : "var/dirty.db" },
+"dbType": "mysql",
+"dbSettings" : {
+  "host"    : "localhost",
+  "database": "etherpad",
+  "user"    : "etherpad",
+  "password": "etherpass",
+  "charset" : "utf8mb4"
+},
 
-  /* Default Pad behavior, users can override by changing */
-  "padOptions": {
-    "noColors": false,
-    "showControls": true,
-    "showChat": true,
-    "showLineNumbers": true,
-    "useMonospaceFont": false,
-    "userName": false,
-    "userColor": false,
-    "rtl": false,
-    "alwaysShowChat": false,
-    "chatAndUsers": false,
-    "lang": "en-gb"
+// Users for basic authentication. is_admin = true gives access to /admin.
+"users": {
+  "admin": {
+    "password": "REDACTED",
+    "is_admin": true
   },
+  "dreeves": {
+    "password": "REDACTED",
+    "is_admin": true
+  }
+},
 
-  /* Should we suppress errors from being visible in the default Pad Text? */
-  "suppressErrorsInPadText" : false,
+"abiword": null,  // Abs path to Abiword executable; null disables Abiword
+"soffice": null, // Abs path to soffice executable; null = no LibreOffice export
+"tidyHtml": null, // Abs path to Tidy executable; null = no Tidy (tidier export)
 
-  /* Users must have a session to access pads. This effectively allows only group pads to be accessed. */
-  "requireSession" : false,
+// Allow import of file types other than known ones
+"allowUnknownFileEnds": true, // known file ends: txt/doc/docx/rtf/odt/html/htm
 
-  /* Users may edit pads but not create new ones. Pad creation is only via the API. This applies both to group pads and regular pads. */
-  "editOnly" : false,
+// How long clients can use served javascript (in seconds). 
+// W/out versioning this may cause problems during deployment. 
+"maxAge": 21600, // 60 * 60 * 6 = 6 hours (0 disables caching)
 
-  /* Users, who have a valid session, automatically get granted access to password protected pads */
-  "sessionNoPassword" : false,
+// Node native SSL support, disabled by default.
+// Make sure to have the minimum and correct file access permissions set
+//"ssl": {
+//  "key"  :  "/etc/letsencrypt/live/etherpad.testprojects.net/privkey.pem",
+//  "cert" :  "/etc/letsencrypt/live/etherpad.testprojects.net/cert.pem",
+//  "ca"   : ["/etc/letsencrypt/live/etherpad.testprojects.net/chain.pem"]
+//},
 
-  /* if true, all css & js will be minified before sending to the client. This will improve the loading performance massivly,
-     but makes it impossible to debug the javascript/css */
-  "minify" : true,
+// Minify all css & js before sending to client:
+"minify": true, // very important for performance but very bad for debugging
 
-  /* How long may clients use served javascript code (in seconds)? Without versioning this
-     may cause problems during deployment. Set to 0 to disable caching */
-  "maxAge" : 21600, // 60 * 60 * 6 = 6 hours
+"trustProxy": false, // Whether using NginX or other proxy/load-balancer
 
-  /* This is the absolute path to the Abiword executable. Setting it to null, disables abiword.
-     Abiword is needed to advanced import/export features of pads*/
-  "abiword" : null,
+// Restrict socket.io transport methods
+"socketTransportProtocols": ["xhr-polling", "jsonp-polling", "htmlfile"],
+                   
+"loadTest": false, // Allow Load Testing tools to hit server. Disables security!
+                               
+"loglevel": "INFO", // Choices: DEBUG, INFO, WARN, ERROR
 
-  /* This is the absolute path to the soffice executable. Setting it to null, disables LibreOffice exporting.
-     LibreOffice can be used in lieu of Abiword to export pads */
-  "soffice" : null,
-
-  /* This is the path to the Tidy executable. Setting it to null, disables Tidy.
-     Tidy is used to improve the quality of exported pads*/
-  "tidyHtml" : null,
-
-  /* Allow import of file types other than the supported types: txt, doc, docx, rtf, odt, html & htm */
-  "allowUnknownFileEnds" : true,
-
-  /* This setting is used if you require authentication of all users.
-     Note: /admin always requires authentication. */
-  "requireAuthentication" : false,
-
-  /* Require authorization by a module, or a user with is_admin set, see below. */
-  "requireAuthorization" : false,
-
-  /*when you use NginX or another proxy/ load-balancer set this to true*/
-  "trustProxy" : false,
-
-  /* Privacy: disable IP logging */
-  "disableIPlogging" : false,
-
-  /* Users for basic authentication. is_admin = true gives access to /admin.
-     If you do not uncomment this, /admin will not be available! */
-  /*
-  "users": {
-    "admin": {
-      "password": "changeme1",
-      "is_admin": true
-    },
-    "user": {
-      "password": "changeme1",
-      "is_admin": false
-    }
-  },
-  */
-
-  // restrict socket.io transport methods
-  "socketTransportProtocols" : ["xhr-polling", "jsonp-polling", "htmlfile"],
-
-  // Allow Load Testing tools to hit the Etherpad Instance.  Warning this will disable security on the instance.
-  "loadTest": false,
-
-  // Disable indentation on new line when previous line ends with some special chars (':', '[', '(', '{')
-  /*
-  "indentationOnNewLine": false,
-  */
-
-  /* The toolbar buttons configuration.
-  "toolbar": {
-    "left": [
-      ["bold", "italic", "underline", "strikethrough"],
-      ["orderedlist", "unorderedlist", "indent", "outdent"],
-      ["undo", "redo"],
-      ["clearauthorship"]
-    ],
-    "right": [
-      ["importexport", "timeslider", "savedrevision"],
-      ["settings", "embed"],
-      ["showusers"]
-    ],
-    "timeslider": [
-      ["timeslider_export", "timeslider_returnToPad"]
-    ]
-  },
-  */
-
-  /* The log level we are using, can be: DEBUG, INFO, WARN, ERROR */
-  "loglevel": "INFO",
-
-  //Logging configuration. See log4js documentation for further information
-  // https://github.com/nomiddlename/log4js-node
-  // You can add as many appenders as you want here:
-  "logconfig" :
-    { "appenders": [
-        { "type": "console"
-        //, "category": "access"// only logs pad access
+// log4js docs: https://github.com/nomiddlename/log4js-node
+"logconfig": { "appenders": [ // Add as many appenders as you want
+  { "type": "console"
+    //, "category": "access" // only logs pad access
+  }
+/*, 
+  { "type": "file"
+  , "filename": "your-log-file-here.log"
+  , "maxLogSize": 1024
+  , "backups": 3 // how many log files there're gonna be at max
+  //, "category": "test" // only log a specific category
+  }
+*/
+/*, 
+  { "type": "logLevelFilter"
+  , "level": "warn" // filters out all log msgs w/ lower level than "error"
+  , "appender": {  Use whatever appender you want here  }
+  }
+*/
+/*,
+  { "type": "logLevelFilter"
+  , "level": "error" // filters out all log msgs w/ lower level than "error"
+  , "appender":
+    { "type": "smtp"
+    , "subject": "An error occurred in your EPL instance!"
+    , "recipients": "bar@blurdybloop.com, baz@blurdybloop.com"
+    , "sendInterval": 300 // 5m; buffers log msgs; 0 = send mail for every msg
+    , "transport": "SMTP"
+    // https://github.com/andris9/Nodemailer#possible-transport-methods
+    , "SMTP": { 
+        "host": "smtp.example.com", "port": 465,
+        "secureConnection": true,
+        "auth": {
+          "user": "foo@example.com",
+          "pass": "bar_foo"
         }
-    /*
-      , { "type": "file"
-      , "filename": "your-log-file-here.log"
-      , "maxLogSize": 1024
-      , "backups": 3 // how many log files there're gonna be at max
-      //, "category": "test" // only log a specific category
-        }*/
-    /*
-      , { "type": "logLevelFilter"
-        , "level": "warn" // filters out all log messages that have a lower level than "error"
-        , "appender":
-          {  Use whatever appender you want here  }
-        }*/
-    /*
-      , { "type": "logLevelFilter"
-        , "level": "error" // filters out all log messages that have a lower level than "error"
-        , "appender":
-          { "type": "smtp"
-          , "subject": "An error occurred in your EPL instance!"
-          , "recipients": "bar@blurdybloop.com, baz@blurdybloop.com"
-          , "sendInterval": 300 // 60 * 5 = 5 minutes -- will buffer log messages; set to 0 to send a mail for every message
-          , "transport": "SMTP", "SMTP": { // see https://github.com/andris9/Nodemailer#possible-transport-methods
-              "host": "smtp.example.com", "port": 465,
-              "secureConnection": true,
-              "auth": {
-                  "user": "foo@example.com",
-                  "pass": "bar_foo"
-              }
-            }
-          }
-        }*/
-      ]
+      }
     }
+  }
+*/
+]}
+
 }
