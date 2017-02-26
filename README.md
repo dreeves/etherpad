@@ -57,6 +57,15 @@ You can initially modify the settings in `settings.json`.
 (If you need to handle multiple settings files, you can pass the path to a settings file to `bin/run.sh` using the `-s|--settings` option. This allows you to run multiple Etherpad instances from the same installation.)
 Once you have access to your /admin section then settings can be modified through the web browser.
 
+## Notes from Sergii
+
+<pre>
+TODO: notes about how we set up the DigitalOcean droplet that this is hosted on.
+
+TODO: expost setup, including different favicon
+
+TODO: 
+
 ## Hide-Referer plugin adjustments:
 
 To make it work the way we want, you need to do the following:
@@ -69,3 +78,4 @@ To make it work the way we want, you need to do the following:
         the_content.innerHTML = '<h4>Referer protection &ndash; Click to visit this external link:</h4><h3><a href="'+urlhash+'">'+urlhash+'</a></h3>';
   with:
         window.location.href = urlhash;
+</pre>
